@@ -18,9 +18,8 @@ Agent (Chainlit / Copilot)
      MCP Server
         ↓
 Agent (Chart displayed as image)
-
-![alt text](image-4.png)
 ```
+![alt text](image-4.png)
 
 ---
 
