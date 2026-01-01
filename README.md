@@ -19,7 +19,7 @@ Agent (Chainlit / Copilot)
         ↓
 Agent (Chart displayed as image)
 ```
-![alt text](image-7.png)
+![alt text](project-images/image-7.png)
 
 ---
 
@@ -207,7 +207,7 @@ Chart.js rendering is working correctly
 
 The endpoint accepts and processes time-series data as expected
 
-![alt text](image.png)
+![alt text](project-images/image.png)
 
 ### 2. MCP Server Tool Validation
 
@@ -221,7 +221,7 @@ The MCP tool successfully calls the Node server
 
 The rendered image is correctly returned from Node → MCP
 
-![alt text](image-1.png)
+![alt text](project-images/image-1.png)
 
 ### 3. Chainlit / Agent Validation
 
@@ -230,10 +230,8 @@ Run the Chainlit application and enter the query:
 How is CPU usage?
 
 (Image from Chainlit in browser)
-![alt text](image-2.png)
+![alt text](project-images/image-2.png)
 
-(Zoom-In)
-![alt text](image-3.png)
 
 You should see the chart rendered inline in the chat, as shown below. This confirms that:
 
@@ -244,3 +242,6 @@ The MCP server processes the request end-to-end
 The Node server renders the chart
 
 The final image is returned and displayed to the user
+
+(Zoom-In from Chat image)
+![alt text](project-images/image-3.png)
