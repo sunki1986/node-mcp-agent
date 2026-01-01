@@ -141,7 +141,7 @@ node index.js
 ### Install uv
 
 ```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
+brew install uv
 ```
 
 ### Setup Environment
@@ -188,15 +188,56 @@ http://localhost:8000
 ```
 
 ---
+ 
 
-## End-to-End Flow Validation
+### Final End-to-End Validation (Working as Expected)
 
-Ask:
-```
-How is CPU Usage?
-```
+This section confirms that all components in the architecture are correctly wired and functioning as intended, from the chart rendering layer up to the agent UI.
 
-Chart should render inline.
+1️⃣ Node Server Endpoint Validation
 
----
+Using Postman, call the Node chart server endpoint with the required request body (time-series input).
 
+You should receive a rendered chart image as shown below, confirming that:
+
+The Node server is up and running
+
+Chart.js rendering is working correctly
+
+The endpoint accepts and processes time-series data as expected
+
+![alt text](image.png)
+
+2️⃣ MCP Server Tool Validation
+
+Using Postman, call the MCP server tool endpoint with the appropriate request payload.
+
+You should receive the chart image shown below, confirming that:
+
+The MCP server is reachable
+
+The MCP tool successfully calls the Node server
+
+The rendered image is correctly returned from Node → MCP
+
+![alt text](image-1.png)
+
+3️⃣ Chainlit / Agent Validation
+
+Run the Chainlit application and enter the query:
+
+How is CPU usage?
+
+![alt text](image-2.png)
+
+![alt text](image-3.png)
+
+You should see the chart rendered inline in the chat, as shown below. This confirms that:
+
+The agent can invoke MCP tools
+
+The MCP server processes the request end-to-end
+
+The Node server renders the chart
+
+The final image is returned and displayed to the user
