@@ -97,10 +97,13 @@ Flow:
 ## Prerequisites
 
 - macOS / Linux (Windows with minor adjustments)
-- Python 3.10+
-- Node.js 18+
+- Python 3.13+
+- Node.js 25+
+- NPM 11+
 - Homebrew (macOS)
 - uv (Python dependency manager)
+- OPENAPI or Equivalent
+- Chainlit
 
 ---
 
