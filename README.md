@@ -228,8 +228,10 @@ Run the Chainlit application and enter the query:
 
 How is CPU usage?
 
+(Image from Chainlit in browser)
 ![alt text](image-2.png)
 
+(Zoom-In)
 ![alt text](image-3.png)
 
 You should see the chart rendered inline in the chat, as shown below. This confirms that:
