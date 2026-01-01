@@ -1,4 +1,4 @@
-# MCP Chart Rendering Project
+# AGENT-MCP-NODE (Chart Rendering Project)
 
 ## Overview
 
