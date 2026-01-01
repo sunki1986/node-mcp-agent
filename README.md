@@ -194,7 +194,7 @@ http://localhost:8000
 
 This section confirms that all components in the architecture are correctly wired and functioning as intended, from the chart rendering layer up to the agent UI.
 
-1️⃣ Node Server Endpoint Validation
+### 1. Node Server Endpoint Validation
 
 Using Postman, call the Node chart server endpoint with the required request body (time-series input).
 
@@ -208,7 +208,7 @@ The endpoint accepts and processes time-series data as expected
 
 ![alt text](image.png)
 
-2️⃣ MCP Server Tool Validation
+### 2. MCP Server Tool Validation
 
 Using Postman, call the MCP server tool endpoint with the appropriate request payload.
 
@@ -222,7 +222,7 @@ The rendered image is correctly returned from Node → MCP
 
 ![alt text](image-1.png)
 
-3️⃣ Chainlit / Agent Validation
+### 3. Chainlit / Agent Validation
 
 Run the Chainlit application and enter the query:
 
