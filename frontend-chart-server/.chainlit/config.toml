@@ -92,6 +92,10 @@ reaction_on_message_received = false
 name = "Assistant"
 
 # default_theme = "dark"
+default_theme = "light"
+
+# Serve your custom CSS
+custom_css = "/public/custom.css"
 
 # Force a specific language for all users (e.g., "en-US", "he-IL", "fr-FR")
 # If not set, the browser's language will be used

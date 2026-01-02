@@ -1,0 +1,31 @@
+
+services:
+  node_chart_server:
+    build:
+      context: ./node-chart-server
+    container_name: node_chart_container
+    ports:
+      - "3000:3000"
+
+  mcp_chart_server:
+    build:
+      context: ./mcp-chart-server
+    container_name: mcp_chart_container
+    ports:
+      - "9000:9000"
+    depends_on:
+      - node_chart_server
+    env_file:
+      - ./mcp-chart-server/.env
+
+  chainlit_chart_server:
+    build: 
+      context: ./frontend-chart-server
+    container_name: chainlit_chart_server
+    ports:
+      - "7000:7000"
+    depends_on:
+      - node_chart_server
+      - mcp_chart_server
+    env_file:
+      - ./frontend-chart-server/.env

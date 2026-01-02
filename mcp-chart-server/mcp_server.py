@@ -50,50 +50,53 @@ async def render_metric_chart(
     """
     Sends time-series to Node.js and returns chart image as base64
     """
-    # 1. Handle case where 'series' is already a list/dict (passed by agent)
-    # or a string (passed by raw JSON input)
-    if isinstance(series, str):
-        try:
-            series_data = json.loads(series)
-            # Handle potential double-encoding if necessary
-            if isinstance(series_data, str):
-                series_data = json.loads(series_data)
-        except json.JSONDecodeError:
-            raise ValueError("series must be a valid JSON string or object")
-    else:
-        series_data = series
+    try:
+        # 1. Handle case where 'series' is already a list/dict (passed by agent)
+        # or a string (passed by raw JSON input)
+        if isinstance(series, str):
+            try:
+                series_data = json.loads(series)
+                # Handle potential double-encoding if necessary
+                if isinstance(series_data, str):
+                    series_data = json.loads(series_data)
+            except json.JSONDecodeError:
+                raise ValueError("series must be a valid JSON string or object")
+        else:
+            series_data = series
 
-    # 2. Extract the series array (handle cases where 'series' is the full dict)
-    if isinstance(series_data, dict) and "series" in series_data:
-        series_array = series_data["series"]
-    else:
-        series_array = series_data
+        # 2. Extract the series array (handle cases where 'series' is the full dict)
+        if isinstance(series_data, dict) and "series" in series_data:
+            series_array = series_data["series"]
+        else:
+            series_array = series_data
 
-    # 3. Payload for your Node.js server
-    payload = {
-        "metric_name": metric_name,
-        "unit": unit,
-        "series": series_array
-    }
+        # 3. Payload for your Node.js server
+        payload = {
+            "metric_name": metric_name,
+            "unit": unit,
+            "series": series_array
+        }
 
-    async with httpx.AsyncClient() as client:
-        response = await client.post(
-            node_server_endpoint,
-            json=payload,
-            timeout=30
-        )
-        response.raise_for_status()
-        # base64_str=base64.b64encode(response.content).decode("utf-8")
-        image_data=response.content
-        return Image(data=image_data, format="png")
-     
+        async with httpx.AsyncClient() as client:
+            response = await client.post(
+                node_server_endpoint,
+                json=payload,
+                timeout=30
+            )
+            response.raise_for_status()
+            # base64_str=base64.b64encode(response.content).decode("utf-8")
+            image_data=response.content
+            return Image(data=image_data, format="png")
+    except Exception as e:
+        print(f'Exception from mcp_chart_server::::{e}')
+        print(f'node server url::::: {node_server_endpoint}')
 
 # ------------------------------------
 # Run HTTP Streamable MCP server
 # ------------------------------------
 
 async def main():
-    await mcp.run_async(transport="streamable-http",host="127.0.0.1",port=9000,path="/mcp")
+    await mcp.run_async(transport="streamable-http",host="0.0.0.0",port=9000,path="/mcp")
 
 if __name__ == "__main__":
     asyncio.run(main())  # Run the async main function

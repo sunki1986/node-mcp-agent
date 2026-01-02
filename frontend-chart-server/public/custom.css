@@ -1,0 +1,16 @@
+/* Light background override */
+body, html {
+    background-color: white !important;
+    color: black !important;
+}
+
+/* Optional: message bubbles */
+.message-bubble {
+    background-color: #f7f7f7 !important;
+    color: black !important;
+}
+
+input, textarea {
+    background-color: #fff !important;
+    color: black !important;
+}
